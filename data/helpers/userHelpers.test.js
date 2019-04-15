@@ -16,7 +16,7 @@ describe("userHelpers", () => {
     })
     describe('findBy', () => {
         it("should return an array whose only element is the object with the given filter", async () => {
-            await userHelpers.insert({
+            await userHelpers.add({
                 username: "A Username", password: 'pass', email: "user@email.com"
             });
             const user = await userHelpers.findBy({ username: 'A Username' });
@@ -24,24 +24,22 @@ describe("userHelpers", () => {
         })
     })
     describe('add', () => {
-        it("should return an array", () => {
-            it("should add an entry to the database", async () => {
-                await userHelpers.insert({
-                    username: "A Username", password: 'pass', email: "user@email.com"
-                });
-                const users = await userHelpers.find();
-                expect(users).toEqual([{ id: 1, username: "A Username", password: 'pass', email: "user@email.com" }]);
-            })
-            it("should return the index of the added entry", async () => {
-                const addedFirst = await userHelpers.insert({
-                    username: "A Username", password: 'pass', email: "user@email.com"
-                });
-                expect(addedFirst).toEqual([1]);
-                const addedSecond = await userHelpers.insert({
-                    username: "A Username", password: 'pass', email: "user@email.com"
-                });
-                expect(addedSecond).toEqual([2]);
-            })
+        it("should add an entry to the database", async () => {
+            await userHelpers.add({
+                username: "A Username", password: 'pass', email: "user@email.com"
+            });
+            const users = await userHelpers.find();
+            expect(users).toEqual([{ id: 1, username: "A Username", password: 'pass', email: "user@email.com" }]);
+        })
+        it("should return the index of the added entry", async () => {
+            const addedFirst = await userHelpers.add({
+                username: "A Username", password: 'pass', email: "user@email.com"
+            });
+            expect(addedFirst).toEqual([1]);
+            const addedSecond = await userHelpers.add({
+                username: "Another Username", password: 'pass', email: "user1@email.com"
+            });
+            expect(addedSecond).toEqual([2]);
         })
     })
 })
