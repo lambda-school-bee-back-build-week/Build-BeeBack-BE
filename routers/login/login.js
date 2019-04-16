@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../../data/helpers/userHelpers');
 const jwt = require("jsonwebtoken");
-const d = require('../../data/dbConfig');
 
 const router = express.Router();
 
@@ -11,7 +10,7 @@ const secret = process.env.SECRET;
 const generateToken = (user, secret) => {
     const payload = {
         subject: user.id,
-        username: user.username,
+        username: user.username
     };
     const options = {
         expiresIn: "1d"

@@ -15,7 +15,6 @@ router.route('/:id').put(async (req, res) => {
     }
 }).delete((req, res) => {
     const id = req.params.id;
-
     Users
         .remove(id)
         .then(user => {
@@ -27,6 +26,15 @@ router.route('/:id').put(async (req, res) => {
         .catch(err => {
             res.status(500).json({ error: 'The user could not be removed from the database.' }, err)
         })
-});
+}).get(async (req, res) => {
+    const id = req.params.id;
+    try {
+        const user = Users.findBy({ id }).first();
+        res.status(200).json(user);
+
+    } catch (error) {
+        res.status(500).json({ message: 'We could not get that user at this time' });
+    }
+})
 
 module.exports = router;

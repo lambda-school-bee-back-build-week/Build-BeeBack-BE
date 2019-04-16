@@ -20,7 +20,7 @@ describe("userHelpers", () => {
                 username: "A Username", password: 'pass', email: "auser@email.com"
             });
             const user = await userHelpers.findBy({ username: 'A Username' });
-            expect(user).toEqual([{ id: 1, username: "A Username", password: 'pass', email: "auser@email.com" }]);
+            expect(user).toEqual([{ id: 1, username: "A Username" }]);
         })
     })
     describe('add', () => {
@@ -41,5 +41,29 @@ describe("userHelpers", () => {
             });
             expect(addedSecond).toEqual([2]);
         })
+    })
+    describe('update', () => {
+        it("should update an entry on the database", async () => {
+            await userHelpers.add({
+                username: "A Username", password: 'pass', email: "auser@email.com"
+            });
+            await userHelpers.update(1, {
+                username: "A Username1", password: 'pass1', email: "auser1@email.com"
+            });
+            const users = await userHelpers.find();
+            expect(users).toEqual([{
+                username: "A Username1", id: 1
+            }]);
+        })
+        // it("should return a 1 if successful", async () => {
+        //     const addedFirst = await userHelpers.add({
+        //         username: "A Username", password: 'pass', email: "auser@email.com"
+        //     });
+        //     expect(addedFirst).toEqual([1]);
+        //     const addedSecond = await userHelpers.add({
+        //         username: "Another Username", password: 'pass', email: "auser1@email.com"
+        //     });
+        //     expect(addedSecond).toEqual([2]);
+        // })
     })
 })
