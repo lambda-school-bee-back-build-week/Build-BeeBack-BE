@@ -30,3 +30,9 @@ function remove(id) {
         .where('id', id)
         .del();
 }
+
+function findById(id) {
+    return db('users')
+        .where({ id })
+        .first()
+}
