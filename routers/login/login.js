@@ -10,7 +10,7 @@ const secret = process.env.SECRET;
 const generateToken = (user, secret) => {
     const payload = {
         subject: user.id,
-        username: user.username,
+        username: user.username
     };
     const options = {
         expiresIn: "1d"
@@ -24,7 +24,6 @@ router.route('/')
         if (!username || !password) return res.status(400).json({ message: "You must have a username and password to register a user" });
         try {
             const user = await db.findBy({ username }).first();
-
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user, secret);
                 return res.status(200).json({ message: 'Logged In', token })
