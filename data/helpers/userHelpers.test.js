@@ -20,7 +20,7 @@ describe("userHelpers", () => {
                 username: "A Username", password: 'pass', email: "auser@email.com"
             });
             const user = await userHelpers.findBy({ username: 'A Username' });
-            expect(user).toEqual([{ id: 1, username: "A Username" }]);
+            expect(user).toEqual([{ id: 1, username: "A Username", password: 'pass', email: "auser@email.com" }]);
         })
     })
     describe('add', () => {
