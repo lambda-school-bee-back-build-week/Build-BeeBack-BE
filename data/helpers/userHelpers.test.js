@@ -29,7 +29,7 @@ describe("userHelpers", () => {
                 username: "A Username", password: 'pass', email: "user@email.com"
             });
             const users = await userHelpers.find();
-            expect(users).toEqual([{ id: 1, username: "A Username", password: 'pass', email: "user@email.com" }]);
+            expect(users).toEqual([{ id: 1, username: "A Username"}]);
         })
         it("should return the index of the added entry", async () => {
             const addedFirst = await userHelpers.add({
