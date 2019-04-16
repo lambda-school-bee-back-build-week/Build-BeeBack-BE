@@ -15,7 +15,7 @@ router.route('/:id').put(async (req, res) => {
     }
 }).delete((req, res) => {
     const id = req.params.id;
-    Users
+    User
         .remove(id)
         .then(user => {
             if (user === 0) {
@@ -29,9 +29,8 @@ router.route('/:id').put(async (req, res) => {
 }).get(async (req, res) => {
     const id = req.params.id;
     try {
-        const user = Users.findBy({ id }).first();
+        const user = await User.findBy({ id }).first();
         res.status(200).json(user);
-
     } catch (error) {
         res.status(500).json({ message: 'We could not get that user at this time' });
     }
