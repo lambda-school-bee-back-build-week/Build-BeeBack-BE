@@ -29,7 +29,7 @@ router.route('/:id').put(async (req, res) => {
 }).get(async (req, res) => {
     const id = req.params.id;
     try {
-        const user = Users.findBy({ id }).first();
+        const user = await Users.findBy({ id }).first();
         res.status(200).json(user);
 
     } catch (error) {
