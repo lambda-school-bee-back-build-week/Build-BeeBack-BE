@@ -18,8 +18,6 @@ exports.up = function (knex, Promise) {
         tbl.specificType('nACETAMIPRID', 'double precision').notNullable();
         tbl.specificType('nTHIACLOPRID', 'double precision').notNullable();
         tbl.specificType('nAllNeonic', 'double precision').notNullable();
-
-
     })
 };
 
