@@ -13,9 +13,9 @@ router.route('/').get(async (req, res) => {
 })
 
 router.route('/:year').get(async (req, res) => {
-    const year = req.params.id;
+    const year = req.params.year;
     try {
-        const data = await db.findBy({ year });
+        const data = await db.findBy({ year: Number(year) });
         res.status(200).json(data);
     } catch (error) {
         res.status(500).json({ message: "We could not get the data at this time" });
