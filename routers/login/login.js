@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../../data/helpers/userHelpers');
 const jwt = require("jsonwebtoken");
-const d = require('../../data/dbConfig');
 
 const router = express.Router();
 
@@ -25,6 +24,7 @@ router.route('/')
         if (!username || !password) return res.status(400).json({ message: "You must have a username and password to register a user" });
         try {
             const user = await db.findBy({ username }).first();
+
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user, secret);
                 return res.status(200).json({ message: 'Logged In', token })
