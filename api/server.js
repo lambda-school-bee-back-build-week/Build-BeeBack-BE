@@ -7,6 +7,7 @@ const registerRouter = require('../routers/register/register');
 const userRouter = require('../routers/users/users');
 const auth = require('../routers/middleware/auth')
 const neonic2 = require('../routers/neonic2/neonic2');
+const stateCharting = require('../routers/stateCharting');
 
 const server = express();
 
@@ -20,5 +21,6 @@ server.use('/api/login', loginRoute);
 server.use('/api/register', registerRouter);
 server.use('/api/users', auth, userRouter);
 server.use('/api/neonic2', neonic2);
+server.use('/api/state-charting', stateCharting);
 
 module.exports = server;
