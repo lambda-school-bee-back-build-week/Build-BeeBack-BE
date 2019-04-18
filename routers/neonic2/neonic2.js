@@ -22,5 +22,15 @@ router.route('/:year').get(async (req, res) => {
     }
 })
 
+router.route('/:usstate').get(async (req, res) => {
+    const usstate = req.params.usstate;
+    try {
+        const data = await db.us_state({ usstate: usstate });
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ message: "We could not get the US State data at this time" });
+    }
+})
+
 
 module.exports = router;
