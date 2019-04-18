@@ -16,8 +16,8 @@ describe('/api/login', () => {
         await request(server).post('/api/login').send({ username: 'User', password: 'pass' }).expect(200);
     })
     it("should return a token", async () => {
-        await userHelpers.add({ username: 'User', password: bcrypt.hashSync('pass', 8), email: "user@email.com" });
-        const data = await request(server).post('/api/login').send({ username: 'User', password: 'pass' });
+        await userHelpers.add({ username: 'User1', password: bcrypt.hashSync('pass', 8), email: "user1@email.com" });
+        const data = await request(server).post('/api/login').send({ username: 'User1', password: 'pass' });
         expect(data.body.message).toBe('Logged In');
         expect(data.body.token).toEqual(expect.any(String));
     })

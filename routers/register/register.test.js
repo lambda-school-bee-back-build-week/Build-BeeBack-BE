@@ -12,32 +12,24 @@ describe("/api/register", () => {
     await db("users").truncate();
   });
   it("should return status 201", async () => {
-    await Users.add({
-      username: "test",
-      password: bcrypt.hashSync("pass", 8),
-      email: "test@email.com"
-    });
+ 
     await request(server)
       .post("/api/register")
       .send({
-        username: "test",
+        username: "tester",
         password: "pass",
-        email: "test@email.com"
+        email: "tester@email.com"
       })
       .expect(201);
   });
   it("should return status 400 if no username, password, or email", async () => {
-    await Users.add({
-      username: "test",
-      password: bcrypt.hashSync("pass", 8),
-      email: "test@email.com"
-    });
+
     await request(server)
       .post("/api/register")
       .send({
         username: "",
         password: "pass",
-        email: "test@email.com"
+        email: "tester@email.com"
       })
       .expect(400);
   });
