@@ -3,23 +3,23 @@
  This is the back-end for the "We'll Bee Back" project for Lambda School's build week. This project was built on express. Tests are done in Jest, with the request function from SuperTest.
 
 ## Dependencies
-    *bcryptjs
-    *cors
-    *dotenv
-    *express
-    *helmet
-    *jest
-    *jsonwebtoken
-    *knex
-    *knex-cleaner
-    *node-fetch
-    *pg
-    *sqlite3
-    *supertest
+* bcryptjs
+* cors
+* dotenv
+* express
+* helmet
+* jest
+* jsonwebtoken
+* knex
+* knex-cleaner
+* node-fetch
+* pg
+* sqlite3
+* supertest
 
 ##Dev Dependencies
-    *cross-env
-    *nodemon
+* cross-env
+* nodemon
 
 ## Requests
 
