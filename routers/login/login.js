@@ -26,7 +26,7 @@ router.route('/')
             const user = await db.findBy({ username }).first();
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user, secret);
-                
+
                 return res.status(200).json({ message: 'Logged In', token })
             }
             else {
