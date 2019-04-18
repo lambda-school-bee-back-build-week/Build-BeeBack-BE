@@ -24,7 +24,6 @@ router.route('/')
         if (!username || !password) return res.status(400).json({ message: "You must have a username and password to login" });
         try {
             const user = await db.findBy({ username }).first();
-            console.log(user)
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user, secret);
                 
