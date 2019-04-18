@@ -24,7 +24,7 @@
 ## Requests
 
 ### /api/register
-|URI|TYPE| SEND|RECIEVE||---|----|-----|-------||/api/register |POST |`username` `password` `email`|new user id|
+|URI|TYPE| SEND|RECIEVE||---|---|---|---||/api/register |POST |`username` `password` `email`|new user id|
 
 ### /api/login
 |URI|TYPE| SEND|RECIEVE||---|----|-----|-------||/api/login |POST  |`username` `password`|message, token|
