@@ -28,6 +28,11 @@ module.exports = {
     }
   },
   testing: {
+    // I don't want to see the warning that returning() doesn't do anything in sqlite3, this overrides that
+    log: {
+      warn(message) {
+      }
+    },
     client: 'sqlite3',
     connection: {
       filename: "./data/test.sqlite3"

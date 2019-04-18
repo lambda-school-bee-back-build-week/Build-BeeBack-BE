@@ -12,7 +12,13 @@ describe('/api/login', () => {
         await db('users').truncate();
     })
     it("should return status 200", async () => {
-        await userHelpers.add({username: 'User', password: bcrypt.hashSync('pass', 8), email: "user@email.com"});
-        await request(server).post('/api/login').send({username: 'User', password: 'pass'}).expect(200);
+        await userHelpers.add({ username: 'User', password: bcrypt.hashSync('pass', 8), email: "user@email.com" });
+        await request(server).post('/api/login').send({ username: 'User', password: 'pass' }).expect(200);
+    })
+    it("should return a token", async () => {
+        await userHelpers.add({ username: 'User', password: bcrypt.hashSync('pass', 8), email: "user@email.com" });
+        const data = await request(server).post('/api/login').send({ username: 'User', password: 'pass' });
+        expect(data.body.message).toBe('Logged In');
+        expect(data.body.token).toEqual(expect.any(String));
     })
 })
